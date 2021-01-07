@@ -41,12 +41,29 @@ def new_item():  # Gets user input for all need fields for an Item
     items.append(tmp)  # Adds Item to global items array
 
 # Update Existing Item
-def update_existing(itemId):
-    pass
+def update_existing():
+    if not items:
+        print("You have no items to update")
+        return
+    list_items()
+    try:
+        item_id_to_update = int(input("What is the item id you wish to update\n>"))
+    except Exception:
+        print("not a valid number")
+        return
+
+    
+    for item in items:
+        item.name = input("Name: ")
+        item.condition = input("Condition: ")
+        break
+    else:
+        print("We didn't find a match")
+
 
 # Delete Item (By item id)
 def delete_item(itemId):
-    pass
+    print("inside del item")
 
 def main():  # Starts the Program off, holds the loop until exit.
     while True:
@@ -59,9 +76,9 @@ def main():  # Starts the Program off, holds the loop until exit.
         elif choice == "2":
             new_item()
         elif choice == "3":
-            pass
+            update_existing()
         elif choice == "4":
-            pass
+            delete_item()
         elif choice == "5": # Exit
             exit()
         else:  # User gave us bad input we let them know then loop again.
