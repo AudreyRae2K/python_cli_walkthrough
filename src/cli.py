@@ -1,5 +1,6 @@
 # And Import Statement to make code from other files available
-from models.item import Item
+from model.item import Item
+import csv
 
 next_id = 0
 items = []  # This will be used to store items
@@ -80,6 +81,9 @@ def delete_item():
 
 
 def main():  # Starts the Program off, holds the loop until exit.
+
+    # Detect if the inventory.csv file exists. Create if not
+    open("inventory.csv", "a+").close()
     while True:
         menu()  # Prints the Options to the Terminal
         choice = input("> ")  # Takes use choice
